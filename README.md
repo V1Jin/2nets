@@ -1,4 +1,5 @@
 # 2nets
 
-ttskwashere
-gggg
+Добро пожаловать на Github нашего проекта 2nets
+
+## 

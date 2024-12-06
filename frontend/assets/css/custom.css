@@ -1,0 +1,7 @@
+body.light-theme {
+    --page-bg: #ffffff;
+    --button-black: #000000;
+    --text: #000000;
+
+    --accent: #b9ff66;
+}
