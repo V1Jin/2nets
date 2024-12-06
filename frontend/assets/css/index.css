@@ -4,6 +4,7 @@
 @import url(./custom.css);
 
 @import url(./components/basic.css);
+@import url(./components/header.css);
 
 /* Для шрифтов обязательно используем rem */
 html {
