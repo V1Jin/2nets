@@ -4,4 +4,14 @@ body.light-theme {
     --text: #000000;
 
     --accent: #2bed55;
+    --grey: #f2f2f2;
+}
+
+body.dark-theme {
+    --page-bg: #000000;
+    --button-black: #ffffff;
+    --text: #ffffff;
+
+    --accent: #2bed55;
+    --grey: #f2f2f2;
 }

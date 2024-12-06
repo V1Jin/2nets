@@ -1,0 +1,166 @@
+.sidebar {
+    padding: 2rem 3rem;
+
+    display: flex;
+    flex-direction: column;
+    flex-basis: 420px;
+}
+
+.sidebar__switch {
+    position: relative;
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+
+    position: relative;
+    
+    background-color: var(--grey);
+    padding: 0.5rem;
+
+    border-radius: 4rem;
+}
+.sidebar__switch-thumb {
+    position: absolute;
+
+    width: 50%;
+    background-color: #ffffff;
+
+    left: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+
+    border-radius: 4rem;
+}
+.sidebar__switch-button {
+    position: relative;
+    z-index: 100;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border-radius: 4rem;
+
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    padding: 0.5rem;
+}
+/* .sidebar__switch-button.--active {
+    background-color: var(--page-bg);
+    
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+
+.sidebar__tabs_wrapper {
+    
+}
+.sidebar__tabs_wrapper-tab {
+    display: none;
+}
+.sidebar__tabs_wrapper-tab.--active {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar__tabs_wrapper-tab .tab__title {
+    font-weight: 600;
+    margin-top: 2.4rem;
+    margin-bottom: 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding-left: 1rem;
+}
+.sidebar__tabs_wrapper-tab .tab__title svg {
+    height: 1.8rem;
+    fill: rgb(255, 38, 0);
+    opacity: 80%;
+}
+
+.sidebar__tabs_wrapper-tab .tab__jamlist {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    margin-top: 1rem;
+    /* padding: 0.5rem; */
+
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.tab__jamlist-jam {
+    padding: 0.5rem 1rem;
+
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    align-items: center;
+    border-radius: 8px;
+}
+.jam__level {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.jam__level-indicator {
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+}
+
+.jam__level-indicator.--red {
+    background-color: red;
+}
+.jam__level-indicator.--yellow {
+    background-color: rgb(239, 169, 38);
+}
+.jam__level-indicator.--green {
+    background-color: rgb(32, 204, 41);
+}
+
+.jam__level-value {
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+.jam__place {
+    display: flex;
+    justify-content: space-between;
+
+    cursor: pointer;
+}
+.jam__place p {
+    font-size: 1.2rem;
+}
+.jam__place svg {
+    height: 1.4rem;
+    opacity: 30%;
+
+    transition: all 0.3s ease;
+}
+.jam__place:hover svg {
+    transform: scale(1.2);
+    opacity: 100%;
+    fill: red;
+}
+
+.tab__show_more {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 1.4rem;
+    
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 70%;
+}

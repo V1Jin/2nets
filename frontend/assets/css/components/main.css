@@ -1,0 +1,23 @@
+.tabs_wrapper {
+    flex-grow: 1;
+    padding: 2rem 3rem 2rem 0;
+}
+.tabs_wrapper__tab {
+    border-radius: 20px;
+    background-color: #dcdcdc;
+
+    height: 100%;
+
+    position: relative;
+}
+.tabs_wrapper__tab .sidebar__switch {
+    position: absolute;
+
+    top: 1rem;
+    left: 0;
+    right: 0;
+
+    margin: 0 auto;
+
+    width: 36rem;
+}
