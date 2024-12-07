@@ -1,7 +1,7 @@
 import sqlite3
 
 # Подключение к базе данных (файл базы создается автоматически, если его нет)
-conn = sqlite3.connect("2nets/backend/reports.db")
+conn = sqlite3.connect("reports.db")
 cursor = conn.cursor()
 
 # Создание таблицы
