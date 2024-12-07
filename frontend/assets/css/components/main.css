@@ -1,0 +1,251 @@
+.tabs_wrapper {
+    flex-grow: 1;
+    padding: 2rem 3rem 2rem 0;
+}
+.tabs_wrapper__tab {
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #dcdcdc;
+
+    height: 100%;
+
+    position: relative;
+
+    /* box-shadow: 0px 0px 15px 3px var(--grey); */
+    border: 1px solid var(--border);
+    box-sizing: content-box;
+}
+
+.tabs_wrapper__tab-inner {
+    display: none;
+}
+.tabs_wrapper__tab-inner[data-tab='2'], 
+.tabs_wrapper__tab-inner[data-tab='3'] {
+    padding-top: 8rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    height: 100%;
+
+    background-color: var(--page-bg);
+}
+.tabs_wrapper__tab-inner.--active {
+    display: block;
+}
+.tabs_wrapper__tab .sidebar__switch {
+    position: absolute;
+
+    top: 1rem;
+    left: 0;
+    right: 0;
+
+    margin: 0 auto;
+
+    width: 36rem;
+}
+
+
+.tabs_wrapper__tab-map {
+    height: 100%;
+}
+
+.tabs_wrapper__tab-map canvas {
+    width: 100%;
+    height: 100%;
+}
+
+
+.map__switch-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    background-color: var(--page-bg);
+    background-image: url(../../src/images/pattern.svg);
+    background-blend-mode: multiply;
+    border-bottom: 1px solid var(--border);
+
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.map__switch {
+    width: min(100%, 48rem);
+
+    z-index: 100;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    
+    background-color: var(--grey-op50);
+    padding: 0.5rem;
+
+    border-radius: 4rem;
+
+    position: relative;
+}
+.map__switch-thumb {
+    position: absolute;
+
+    width: 33%;
+    background-color: var(--page-bg);
+
+    transition: all 0.3s ease;
+    left: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+
+    border-radius: 4rem;
+}
+.map__switch-button {
+    position: relative;
+    z-index: 100;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border-radius: 4rem;
+
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    padding: 0.5rem;
+
+    display: flex;
+    gap: 0.5rem;
+
+    transition: all 0.5s ease;
+}
+.map__switch-button svg {
+    transition: all 0.5s ease;
+
+    height: 1.4rem;
+    opacity: 30%;
+}
+.map__switch-button.--active {
+    font-weight: 600;
+    color: var(--accent);
+}
+.map__switch-button.--active svg {
+    opacity: 70%;
+    fill: var(--accent);
+}
+
+
+.tabs_wrapper__tab-cams {
+    /* overflow-y: auto; */
+}
+.--active {
+}
+
+.main_tab__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.main_tab__title h4 {
+    font-weight: 600;
+}
+.main_tab__title svg {
+    height: 1.8rem;
+    
+    opacity: 70%;
+    fill: var(--accent);
+}
+
+.main_tab__camlist {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 8px;
+}
+.main_tab__camlist_wrapper {
+    overflow-y: auto;
+    margin-top: 2rem;
+
+    max-height: 50rem;
+}
+.main_tab__camlist_wrapper::-webkit-scrollbar {
+    display: none;
+}
+.main_tab__camlist-cam {
+    padding: 1.4rem 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main_tab__camlist-cam:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+}
+.cam__address {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.cam__link {
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    padding: 0.5rem 1rem;
+
+    background-color: var(--page-bg);
+    color: var(--accent);
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.main_tab__event_list-wrapper {
+    margin-top: 2rem;
+}
+.main_tab__event_list {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+.main_tab__event_list-event {
+    background: url(../../src/images/pattern.svg);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+
+    min-height: 120px;
+    padding-top: 3.8rem;
+}
+.main_tab__event_list-event .event__inner {
+    background-color: #fff;
+    height: 100%;
+    padding: 1rem;
+}
+
+.event__inner-place {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.event__inner-address {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+.event__inner-address button {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.event__inner-address button svg {
+    height: 1.4rem;
+    opacity: 30%;
+}
+.event__inner-date {
+    color: var(--accent);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}

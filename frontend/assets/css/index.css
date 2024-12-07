@@ -4,6 +4,9 @@
 @import url(./custom.css);
 
 @import url(./components/basic.css);
+@import url(./components/header.css);
+@import url(./components/sidebar.css);
+@import url(./components/main.css);
 
 /* Для шрифтов обязательно используем rem */
 html {
@@ -12,4 +15,13 @@ html {
 
 body {
     background-color: var(--page-bg);
+
+    overflow-y: hidden;
+}
+
+.app {
+    display: flex;
+    color: var(--text);
+
+    height: calc(100dvh - 6rem);
 }

@@ -3,5 +3,18 @@ body.light-theme {
     --button-black: #000000;
     --text: #000000;
 
-    --accent: #b9ff66;
+    --border: #dedede;
+    --accent: red;
+    --grey: #f2f2f2;
+    --grey-op50: rgba(242, 242, 242, 0.5);
+}
+
+body.dark-theme {
+    --page-bg: #000000;
+    --button-black: #ffffff;
+    --text: #ffffff;
+
+    --border: #dedede;
+    --accent: red;
+    --grey: #171717;
 }
