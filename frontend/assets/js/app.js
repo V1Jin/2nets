@@ -25,7 +25,7 @@ document.querySelectorAll(".map__switch-button").forEach(btn => {
         document.querySelector(".map__switch-button.--active").classList.remove("--active");
         btn.classList.add("--active");
 
-        document.querySelector(".map__tabs_wrapper-tab.--active").classList.remove("--active");
-        document.querySelector(".map__tabs_wrapper-tab[data-tab='" + tabID + "']").classList.add("--active");
+        document.querySelector(".tabs_wrapper__tab-inner.--active").classList.remove("--active");
+        document.querySelector(".tabs_wrapper__tab-inner[data-tab='" + tabID + "']").classList.add("--active");
     };
 });

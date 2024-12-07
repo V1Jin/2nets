@@ -19,6 +19,7 @@
     font-weight: 500;
 }
 .header__logo h3 span {
+    border-radius: 2px;
     color: var(--accent);
 }
 .header__logo img {

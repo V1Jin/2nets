@@ -93,7 +93,7 @@
 
 .sidebar__tabs_wrapper-tab .tab__title {
     font-weight: 600;
-    margin-top: 2.4rem;
+    margin-top: 3.4rem;
     margin-bottom: 1rem;
 
     display: flex;
@@ -138,8 +138,49 @@
     border-radius: 4px;
 }
 
+@keyframes pulseRed {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+}
+
+@keyframes pulseYellow {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+    }
+}
+
+
 .jam__level-indicator.--red {
     background-color: red;
+
+    box-shadow: 0 0 0 0 rgb(255, 0, 0);
+    transform: scale(1);
+}
+.tab__jamlist-jam:first-child .jam__level-indicator.--red {
+    animation: pulseRed 2s infinite;
 }
 .jam__level-indicator.--yellow {
     background-color: rgb(239, 169, 38);
@@ -253,12 +294,22 @@
     background-color: var(--accent);
     color: var(--page-bg);
     text-align: center;
+    cursor: pointer;
 
-    max-width: 10rem;
+    max-width: 12rem;
     width: 100%;
 
     font-size: 1.2rem;
     font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.date_marker__date svg {
+    height: 1.4rem;
+    fill: var(--page-bg);
 }
 .tab__warnings-message {
     display: flex;
@@ -288,6 +339,7 @@
 .message__text {
     font-size: 1.2rem;
     font-weight: 500;
+    padding-bottom: 2rem;
 }
 .message__text-address {
     font-weight: 700;
