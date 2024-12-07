@@ -49,10 +49,10 @@ def get_stats():
     WITH FilteredReports AS (
         SELECT
             address,
-            strfcreated_at('%H', created_at) AS hour,
+            strftime('%H', created_at) AS hour,
             COUNT(*) AS count
         FROM reports
-        WHERE strfcreated_at('%w', created_at) = strfcreated_at('%w', 'now') -- Текущий день недели
+        WHERE strftime('%w', created_at) = strftime('%w', 'now') -- Текущий день недели
         GROUP BY address, hour
     ),
     MaxReports AS (
@@ -75,7 +75,6 @@ def get_stats():
     return stats
 
 
-import sqlite3
 
 def set_appl(data):
 
@@ -102,8 +101,7 @@ def set_appl(data):
     conn.commit()
     conn.close()
 
-from datetime import datetime
-import sqlite3
+
 
 def get_appl():
     today = datetime.now().strftime('%Y-%m-%d')
@@ -126,3 +124,5 @@ def get_appl():
     conn.close()
 
     return stats
+
+print(get_stats())
