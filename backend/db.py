@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 # Подключение к базе данных (файл базы создается автоматически, если его нет)
 conn = sqlite3.connect("reports.db")
@@ -10,7 +11,7 @@ CREATE TABLE IF NOT EXISTS reports (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     address TEXT NOT NULL,
     trouble TEXT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at DATEcreated_at DEFAULT CURRENT_created_atSTAMP
 )
 """)
 
@@ -25,20 +26,18 @@ def add_report(data):
     if not required_keys.issubset(data.keys()):
         raise ValueError(f"В словаре должны быть ключи: {', '.join(required_keys)}")
 
-    # Подключаемся к базе данных
+
     conn = sqlite3.connect("reports.db")
     cursor = conn.cursor()
 
-    # Выполняем добавление данных
+
     cursor.execute("""
     INSERT INTO reports (address, trouble)
     VALUES (?, ?)
     """, (data["address"], data["trouble"]))
 
-    # Сохраняем изменения и закрываем соединение
     conn.commit()
     conn.close()
-
 
 
 def get_stats():
@@ -74,3 +73,57 @@ def get_stats():
     conn.close()
 
     return stats
+
+
+
+def set_appl(data):
+
+
+
+    conn = sqlite3.connect("appls.db")
+    cursor = conn.cursor()
+
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS appls (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        app_text TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
+
+    cursor.execute("""
+    INSERT INTO appls (app_text, created_at)
+    VALUES (?, ?)
+    """, (data["text"], data["created_at"]))
+
+    conn.commit()
+    conn.close()
+
+
+
+def get_appl():
+    today = datetime.now().strftime('%Y-%m-%d')
+
+
+    conn = sqlite3.connect("appls.db")
+    cursor = conn.cursor()
+
+    query = """
+    SELECT *
+    FROM appls
+    WHERE DATE(created_at) = ?
+    """
+
+    cursor.execute(query, (today,))
+    results = cursor.fetchall()
+
+    stats = {row[1]: row[2] for row in results}
+
+    conn.close()
+
+    return stats
+
+# print (get_stats())
+# print (get_appl())

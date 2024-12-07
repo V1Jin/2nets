@@ -29,7 +29,7 @@ CORS(app)  # Разрешаем кросс-доменные запросы
 def get_data():
     return parser.get_response()
 
-@app.route("/api/report",methods=["POST"])
+@app.route("/api/report",methods=["POST"]) #ОТЧЕТ
 def get_db_data():
     try:
         new_data = request.get_json()
@@ -42,6 +42,10 @@ def get_db_data():
 @app.route("/api/prediction")
 def get_pred_data():
     return db.get_stats()
+
+@app.route("/api/warning")
+def get_warning_data():
+    return db.get_appl()
 
 # @app.route("/api/request")
 # def get_req():

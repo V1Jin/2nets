@@ -87,43 +87,44 @@ const mockCameras = [
     }
 ];
 
-const mockEvents = [
-    {
-        name: "Кроп Арена",
-        address: "ул. Путевая, 5/1",
-        time: "сегодня 7 декабря, 20:00"
-    },
-    {
-        name: "Кроп Арена",
-        address: "ул. Путевая, 5/1",
-        time: "сегодня 7 декабря, 20:00"
-    },
-    {
-        name: "Кроп Арена",
-        address: "ул. Путевая, 5/1",
-        time: "сегодня 7 декабря, 20:00"
-    },
-    {
-        name: "Кроп Арена",
-        address: "ул. Путевая, 5/1",
-        time: "сегодня 7 декабря, 20:00"
-    },
-    {
-        name: "Кроп Арена",
-        address: "ул. Путевая, 5/1",
-        time: "сегодня 7 декабря, 20:00"
-    },
-    {
-        name: "Кроп Арена",
-        address: "ул. Путевая, 5/1",
-        time: "сегодня 7 декабря, 20:00"
-    },
-    {
-        name: "Кроп Арена",
-        address: "ул. Путевая, 5/1",
-        time: "сегодня 7 декабря, 20:00"
-    }
-];
+// const mockEvents = [
+//     {
+//         name: "Кроп Арена",
+//         address: "ул. Путевая, 5/1",
+//         time: "сегодня 7 декабря, 20:00"
+//     },
+//     {
+//         name: "Кроп Арена",
+//         address: "ул. Путевая, 5/1",
+//         time: "сегодня 7 декабря, 20:00"
+//     },
+//     {
+//         name: "Кроп Арена",
+//         address: "ул. Путевая, 5/1",
+//         time: "сегодня 7 декабря, 20:00"
+//     },
+//     {
+//         name: "Кроп Арена",
+//         address: "ул. Путевая, 5/1",
+//         time: "сегодня 7 декабря, 20:00"
+//     },
+//     {
+//         name: "Кроп Арена",
+//         address: "ул. Путевая, 5/1",
+//         time: "сегодня 7 декабря, 20:00"
+//     },
+//     {
+//         name: "Кроп Арена",
+//         address: "ул. Путевая, 5/1",
+//         time: "сегодня 7 декабря, 20:00"
+//     },
+//     {
+//         name: "Кроп Арена",
+//         address: "ул. Путевая, 5/1",
+//         time: "сегодня 7 декабря, 20:00"
+//     }
+// ];
+var mockEvents;
 
 const mockReports = [
     {
@@ -147,6 +148,58 @@ const mockReports = [
         time: "07.12.2024 19:14"
     }
 ];
+
+document.addEventListener("DOMContentLoaded",function(){
+    console.log("Страница успешно загружена");
+    fetch("http://localhost:5000/api/events")
+    .then(response => {
+        if (response.ok){
+            console.log("Events data loaded") //СОБЫТИЯ
+            return response.json()
+        }
+        else{
+            console.log("Error events data")
+        }
+    })
+    .then(data => {
+        mockEvents = data;
+        renderEvents(mockEvents);
+    })
+
+
+    fetch("http://localhost:5000/api/prediction")
+    .then(response => {
+        if (response.ok){
+            console.log("Prediction data loaded") //ПРЕДИКШН
+            return response.json()
+        }
+        else{
+            console.log("Prediction data ERROR")
+        }
+    })
+    .then(data => {
+        console.log("prediction data = ", data)
+        renderForecastJam(data)
+    })
+
+
+    fetch("http://localhost:5000/api/warning")
+    .then(response => {
+        if (response.ok){
+            console.log("Warnings content loaded")
+            return response.json()
+        }
+        else{
+            console.log("Warnings content ERROR")
+        }
+    })
+    .then(data => {
+        renderReports(data);
+    })
+})
+
+console.log(mockEvents)
+
 
 function renderCurrentJam(data) {
 
@@ -183,25 +236,25 @@ function renderForecastJam(data) {
 
     let forecastListElement = document.querySelector(".tab__jamlist#forecast_list");
 
-    data.forEach(field => {
-
+    for (let key of Object.keys(data)) {
+        // console.log(`${key}: ${data[key]}`);
         let indicatorColor = "--yellow";
 
-        if (field.level >= 7)
-            indicatorColor = "--red";
-
+        // if (field.level >= 7)
+        indicatorColor = "--red";
+        
+        // <div class="jam__level-value">${field.level}</div>
         forecastListElement.innerHTML += 
         `
             <div class="tab__jamlist-jam">
                 <div class="jam__level">
                     <div class="jam__level-indicator ${indicatorColor}"></div>
-                    <div class="jam__level-value">${field.level}</div>
                 </div>
                 <div class="jam__place">
                     <p>
-                        <span class="jam__place-address">${field.address}</span>
+                        <span class="jam__place-address">${key}</span>
                         <span class="jam__place-time">В промежутке <b
-                                class="jam__place-time__value">${field.hour % 24}:00-${(field.hour+1) % 24}:00</b></span>
+                                class="jam__place-time__value">${data[key] % 24}:00-${(data[key]+1) % 24}:00</b></span>
                     </p>
                     <svg xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
@@ -211,11 +264,42 @@ function renderForecastJam(data) {
                 </div>
             </div>
         `;
-    });
+    }
+
+    // data.forEach(field => {
+
+    //     let indicatorColor = "--yellow";
+
+    //     // if (field.level >= 7)
+    //     indicatorColor = "--red";
+        
+    //     // <div class="jam__level-value">${field.level}</div>
+    //     forecastListElement.innerHTML += 
+    //     `
+    //         <div class="tab__jamlist-jam">
+    //             <div class="jam__level">
+    //                 <div class="jam__level-indicator ${indicatorColor}"></div>
+    //             </div>
+    //             <div class="jam__place">
+    //                 <p>
+    //                     <span class="jam__place-address">${field.address}</span>
+    //                     <span class="jam__place-time">В промежутке <b
+    //                             class="jam__place-time__value">${field.hour % 24}:00-${(field.hour+1) % 24}:00</b></span>
+    //                 </p>
+    //                 <svg xmlns="http://www.w3.org/2000/svg"
+    //                     viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+    //                     <path
+    //                         d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
+    //                 </svg>
+    //             </div>
+    //         </div>
+    //     `;
+    // });
 }
 
 function renderCameras(data) {
     let camerasList = document.querySelector(".main_tab__camlist");
+
 
     data.forEach(field => {
 
@@ -252,7 +336,7 @@ function renderEvents(data) {
                         </svg>
                     </button>
                 </div>
-                <div class="event__inner-date">${field.time}</div>
+                <div class="event__inner-date">${field.date}</div>
             </div>
         </div>
         `
@@ -262,24 +346,38 @@ function renderEvents(data) {
 function renderReports(data) {
     let reportsList = document.querySelector(".tab__warnings-inner");
 
-    data.forEach(field => {
-
+    for (let key of Object.keys(data)){
         reportsList.innerHTML +=
         `
         <div class="tab__warnings-message">
             <div class="message__text">
-                Пробка на пересечении <span class="message__text-address">${field.reportMessage}</span>
+                <span class="message__text-address">${key}</span>
             </div>
             <div class="message__date">
-                ${field.time}
+                ${data[key]}
             </div>
         </div>
         `;
-    });
+    }
+
+    // data.forEach(field => {
+
+    //     reportsList.innerHTML +=
+    //     `
+    //     <div class="tab__warnings-message">
+    //         <div class="message__text">
+    //             Пробка на пересечении <span class="message__text-address">${field.reportMessage}</span>
+    //         </div>
+    //         <div class="message__date">
+    //             ${field.time}
+    //         </div>
+    //     </div>
+    //     `;
+    // });
 }
 
 renderCurrentJam(mockCurrentJam);
-renderForecastJam(mockForecastJam);
+// renderForecastJam(mockForecastJam);
 renderCameras(mockCameras);
-renderEvents(mockEvents);
-renderReports(mockReports);
+// renderEvents(mockEvents);
+// renderReports(mockReports);
