@@ -4,9 +4,16 @@
     display: flex;
     flex-direction: column;
     flex-basis: 420px;
+
+    overflow-y: auto;
+}
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar__switch {
+    margin-top: 1rem;
+
     position: relative;
     
     display: grid;
@@ -24,8 +31,9 @@
     position: absolute;
 
     width: 50%;
-    background-color: #ffffff;
+    background-color: var(--page-bg);
 
+    transition: all 0.3s ease;
     left: 0.5rem;
     top: 0.5rem;
     bottom: 0.5rem;
@@ -49,27 +57,38 @@
     cursor: pointer;
 
     padding: 0.5rem;
-}
-/* .sidebar__switch-button.--active {
-    background-color: var(--page-bg);
-    
-    width: 100%;
 
     display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+    gap: 0.5rem;
+
+    transition: all 0.5s ease;
+}
+.sidebar__switch-button svg {
+    transition: all 0.5s ease;
+
+    height: 1.4rem;
+    opacity: 30%;
+}
+.sidebar__switch-button.--active {
+    font-weight: 600;
+    color: var(--accent);
+}
+.sidebar__switch-button.--active svg {
+    opacity: 70%;
+    fill: var(--accent);
+}
 
 
 .sidebar__tabs_wrapper {
-    
+    height: 100%;
 }
 .sidebar__tabs_wrapper-tab {
     display: none;
+    flex-direction: column;
+    height: 100%;
 }
 .sidebar__tabs_wrapper-tab.--active {
     display: flex;
-    flex-direction: column;
 }
 
 .sidebar__tabs_wrapper-tab .tab__title {
@@ -92,7 +111,7 @@
 .sidebar__tabs_wrapper-tab .tab__jamlist {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    /* gap: 1rem; */
     
     margin-top: 1rem;
     /* padding: 0.5rem; */
@@ -101,7 +120,7 @@
     font-weight: 500;
 }
 .tab__jamlist-jam {
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
 
     display: grid;
     grid-template-columns: 5rem 1fr;
@@ -136,11 +155,26 @@
 .jam__place {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     cursor: pointer;
 }
 .jam__place p {
     font-size: 1.2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.jam__place-address {
+
+}
+.jam__place-time {
+    font-size: 1.2rem;
+    opacity: 70%;
+}
+.jam__place-time b {
+    font-weight: 600;
 }
 .jam__place svg {
     height: 1.4rem;
@@ -148,7 +182,7 @@
 
     transition: all 0.3s ease;
 }
-.jam__place:hover svg {
+.tab__jamlist-jam:hover svg {
     transform: scale(1.2);
     opacity: 100%;
     fill: red;
@@ -163,4 +197,107 @@
     font-size: 1.2rem;
     font-weight: 500;
     opacity: 70%;
+}
+.tab__show_more#forecast_more_btn {
+    padding-bottom: 4rem;
+}
+
+.tab__warnings {
+    margin-top: 1rem;
+    border-radius: 2rem;
+
+    height: 100%;
+    background-color: var(--grey);
+    overflow: hidden;
+
+    position: relative;
+}
+.tab__warnings-inner {
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    overflow-y: auto;
+
+    padding-bottom: 6rem;
+    max-height: calc(100% - 6rem);
+
+    position: relative;
+}
+.tab__warnings::after {
+    content: '';
+
+    position: absolute;
+    bottom: 4rem;
+    left: 0;
+    right: 0;
+    height: 10rem;
+
+    z-index: 100;
+
+    background: linear-gradient(0deg, var(--grey), #00000000);
+}
+.tab__warnings-inner::-webkit-scrollbar {
+    display: none;
+}
+.tab__warnings-date_marker {
+    display: flex;
+    justify-content: center;
+}
+.date_marker__date {
+    padding: 0.5rem;
+
+    border-radius: 2rem;
+    background-color: var(--accent);
+    color: var(--page-bg);
+    text-align: center;
+
+    max-width: 10rem;
+    width: 100%;
+
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.tab__warnings-message {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+
+    background-color: var(--page-bg);
+    border-radius: 8px;
+    border-bottom-left-radius: 0;
+
+    position: relative;
+}
+.tab__warnings-message::after {
+    content: '';
+
+    position: absolute;
+
+    clip-path: polygon(100% 0, 0 0, 0 100%);
+
+    bottom: -1rem;
+    left: 0;
+    height: 1rem;
+    width: 1rem;
+    background-color: var(--page-bg);
+}
+.message__text {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.message__text-address {
+    font-weight: 700;
+}
+.message__date {
+    text-align: right;
+    font-size: 1.2rem;
+    opacity: 70%;
+
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
 }

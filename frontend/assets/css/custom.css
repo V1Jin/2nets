@@ -3,8 +3,10 @@ body.light-theme {
     --button-black: #000000;
     --text: #000000;
 
-    --accent: #2bed55;
+    --border: #dedede;
+    --accent: red;
     --grey: #f2f2f2;
+    --grey-op50: rgba(242, 242, 242, 0.5);
 }
 
 body.dark-theme {
@@ -12,6 +14,7 @@ body.dark-theme {
     --button-black: #ffffff;
     --text: #ffffff;
 
-    --accent: #2bed55;
-    --grey: #f2f2f2;
+    --border: #dedede;
+    --accent: red;
+    --grey: #171717;
 }
