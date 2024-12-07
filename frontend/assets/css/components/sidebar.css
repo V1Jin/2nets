@@ -353,3 +353,25 @@
     bottom: 0.5rem;
     right: 0.5rem;
 }
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 200;
+
+        width: 100%;
+        height: 100dvh;
+
+        display: none;
+        
+        background-color: var(--page-bg);
+    }
+    .sidebar.--active {
+        display: flex;
+    }
+}

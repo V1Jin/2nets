@@ -135,16 +135,16 @@ const mockReports = [
         time: "07.12.2024 18:14"
     },
     {
-        reportMessage: "ДТП на пересечении ул. Красная и ул. Северная",
-        time: "07.12.2024 19:14"
+        reportMessage: "ДТП на ул. Мачуги",
+        time: "07.12.2024 18:17"
     },
     {
         reportMessage: "Затор на пересечении ул. Российская и ул. Зиповская",
-        time: "07.12.2024 18:14"
+        time: "07.12.2024 18:44"
     },
     {
         reportMessage: "ДТП на пересечении ул. Красная и ул. Северная",
-        time: "07.12.2024 19:14"
+        time: "07.12.2024 19:12"
     }
 ];
 
@@ -268,7 +268,7 @@ function renderReports(data) {
         `
         <div class="tab__warnings-message">
             <div class="message__text">
-                Пробка на пересечении <span class="message__text-address">${field.reportMessage}</span>
+                <span class="message__text-address">${field.reportMessage}</span>
             </div>
             <div class="message__date">
                 ${field.time}

@@ -25,3 +25,10 @@ body {
 
     height: calc(100dvh - 6rem);
 }
+
+
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+}
