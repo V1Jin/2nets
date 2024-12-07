@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import parser
-
+import db
 
 
 app = Flask(__name__)
@@ -29,7 +29,30 @@ CORS(app)  # Разрешаем кросс-доменные запросы
 def get_data():
     return parser.get_response()
 
+@app.route("/api/report",methods=["POST"])
+def get_db_data():
+    try:
+        new_data = request.get_json()
+        print (new_data)
+        print (type(new_data))
+        db.add_report(new_data)
+        return jsonify(status="ok")
+    except Exception as ex: print ("error ", ex)
 
+@app.route("/api/prediction")
+def get_pred_data():
+    return db.get_stats()
+
+# @app.route("/api/request")
+# def get_req():
+
+
+# new_data = {
+#     "address": "Прапорщика 222",
+#     "trouble": "ЧС"
+# }
+# print ("hello")
+# db.add_report(new_data)
 
 
 if __name__ == '__main__':

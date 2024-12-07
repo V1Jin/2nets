@@ -40,7 +40,6 @@ def add_report(data):
     conn.close()
 
 
-import sqlite3
 
 def get_stats():
 

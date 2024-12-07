@@ -7,7 +7,7 @@ from datetime import datetime,timedelta
 def get_response():
     try:
         time = datetime.now().date()
-        time = time+timedelta(days=1)
+        # time = time+timedelta(days=1)
         sport_url = f"https://afisha.yandex.ru/krasnodar?utm_source=direct_search&utm_medium=paid_performance&utm_campaign=113627793%7CMSCAMP-60_%5BAF-PT%5D_%7BWS%3AS%7D_RU-35_goal-REV_Category-Афиша-Plus&utm_term=---autotargeting&utm_content=INTid%7C0100000052792029241_52792029241%7Ccid%7C113627793%7Cgid%7C5481724465%7Caid%7C16420617886%7Cpos%7Cpremium1%7Csrc%7Csearch_none%7Cdvc%7Cdesktop%7Cevid%7C0%7Cretid%7C0&yclid=3715277752606654463&rubric=sport&period=1&date={time}"
         concerts_url = f"https://afisha.yandex.ru/krasnodar/selections/concert-hot?date={time}&period=1"
 
@@ -49,8 +49,7 @@ def make_jsons(event):
     }
     return newDict
 
-print (get_response())
-
+# get_response()
 # with open("new.json","w",encoding="utf-8") as file:
 #     json.dump(events[0].find("div")["data-bem"],file,ensure_ascii=False,indent=4)
 
