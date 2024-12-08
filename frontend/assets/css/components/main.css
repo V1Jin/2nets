@@ -203,8 +203,16 @@
     background-color: var(--page-bg);
     color: var(--accent);
     text-decoration: none;
-
+    outline: none;
+    border: 2px solid var(--accent);
+    border-radius: 30px;
     transition: all 0.3s ease;
+}
+
+.cam__link:hover{
+    cursor: pointer;
+    color: var(--page-bg);
+    background-color: var(--accent);
 }
 
 .main_tab__event_list-wrapper {
