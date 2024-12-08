@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded",function(){
     .then(response => {
         if (response.ok){
             console.log("Events data loaded") //СОБЫТИЯ
+            make_move_cam()
             return response.json()
         }
         else{
@@ -178,7 +179,6 @@ document.addEventListener("DOMContentLoaded",function(){
         }
     })
     .then(data => {
-        console.log("prediction data = ", data)
         renderForecastJam(data)
     })
 
@@ -195,6 +195,20 @@ document.addEventListener("DOMContentLoaded",function(){
     })
     .then(data => {
         renderReports(data);
+    })
+
+    fetch("http://localhost:5000/api/cameras")
+    .then(response => {
+        if (response.ok){
+            console.log("Cameras content loaded")
+            return response.json()
+        }
+        else{
+            console.log("Cameras content ERROR")
+        }
+    })
+    .then(data => {
+        renderCameras(data)
     })
 })
 
@@ -300,21 +314,38 @@ function renderForecastJam(data) {
 function renderCameras(data) {
     let camerasList = document.querySelector(".main_tab__camlist");
 
+    data = data["features"]
 
-    data.forEach(field => {
-
+    for (let key of data){
         camerasList.innerHTML += 
         `
             <div class="main_tab__camlist-cam">
                 <div class="cam__address">
-                    ${field.address}
+                    ${key["properties"]["hintContent"]}
                 </div>
-                <a href="${field.link}" class="cam__link">
+                <button class="cam__link [${key["geometry"]["coordinates"]}]">
                     Перейти
                 </a>
             </div>
         `;
-    });
+    }
+
+
+    // data.forEach(field => {
+
+    //     camerasList.innerHTML += 
+    //     `
+    //         <div class="main_tab__camlist-cam">
+    //             <div class="cam__address">
+    //                 ${field.address}
+    //             </div>
+    //             <a href="${field.link}" class="cam__link">
+    //                 Перейти
+    //             </a>
+    //         </div>
+    //     `;
+    // });
+    console.log("cameras rendered")
 }
 
 function renderEvents(data) {
@@ -378,6 +409,6 @@ function renderReports(data) {
 
 renderCurrentJam(mockCurrentJam);
 // renderForecastJam(mockForecastJam);
-renderCameras(mockCameras);
+// renderCameras(mockCameras);
 // renderEvents(mockEvents);
 // renderReports(mockReports);

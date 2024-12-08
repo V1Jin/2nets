@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import parser
 import db
-
+import json
 
 app = Flask(__name__)
 CORS(app)  # Разрешаем кросс-доменные запросы
@@ -25,6 +25,10 @@ CORS(app)  # Разрешаем кросс-доменные запросы
 #     print(notes)
 #     return jsonify(new_note), 201
 
+
+
+
+
 @app.route("/api/events", methods=["GET"])
 def get_data():
     return parser.get_response()
@@ -46,6 +50,13 @@ def get_pred_data():
 @app.route("/api/warning")
 def get_warning_data():
     return db.get_appl()
+
+@app.route("/api/cameras")
+def get_cameras_data():
+    with open("camera_data.json","r",encoding="utf-8") as file:
+        data = json.load(file)
+    print ("Succesfully sent data")
+    return data
 
 # @app.route("/api/request")
 # def get_req():

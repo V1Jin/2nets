@@ -1,0 +1,9 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {"type": "Feature", "id": 0, "geometry": {"type": "Point", "coordinates": [45.037171, 38.975151]}, "properties": {"balloonContentHeader": "<span>Володи Головатого/Красная</span>", "balloonConntentBody": "","balloonContentFooter": "<span style='color:red'>Pro</span>свет", "clusterCaption": "<strong><s>Еще</s> одна</strong> метка", "hintContent": "<strong>Володи Головатого/Красная</strong>"}},
+        {"type": "Feature", "id": 1, "geometry": {"type": "Point", "coordinates": [45.040502, 38.974253]}, "properties": {"balloonContentHeader": "<strong>Восточно-Кругликовская у стадиона</strong>", "balloonContentBody": "<div height='100%'></div>", "balloonContentFooter": "<span style='color:red'>Pro</span>свет", "clusterCaption": "<strong><s>Еще</s> одна</strong> метка", "hintContent": "<strong>Восточно-Кругликовская у стадиона</strong>"}},
+        {"type": "Feature", "id": 2, "geometry": {"type": "Point", "coordinates": [45.019666, 39.067848]}, "properties": {"balloonContentHeader": "<strong>Лента/Западный обход</strong>", "balloonContentBody": "<div height='100%'></div>", "balloonContentFooter": "<span style='color:red'>Pro</span>свет", "clusterCaption": "<strong><s>Еще</s> одна</strong> метка", "hintContent": "<strong>Лента/Западный обход</strong>"}},
+        {"type": "Feature", "id": 3, "geometry": {"type": "Point", "coordinates": [45.015524, 38.959754]}, "properties": {"balloonContentHeader": "<strong>Светлая/Родные просторы</strong>", "balloonContentBody": "<div height='100%'></div>", "balloonContentFooter": "<span style='color:red'>Pro</span>свет", "clusterCaption": "<strong><s>Еще</s> одна</strong> метка", "hintContent": "<strong>Светлая/Родные просторы</strong>"}}
+    ]
+}
